@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ListDemo {
-    public void listDemo(){
+    public static void main(String[] args) {
         List<String> fruits=new ArrayList<>();
 
         fruits.add("Mere");

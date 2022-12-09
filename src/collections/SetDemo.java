@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class SetDemo {
-    public void setDemo(){
+    public static void main(String[] args) {
         Set<Integer> digits=new HashSet<>();
         for(int i=9;i>=0;i--){
             digits.add(i);

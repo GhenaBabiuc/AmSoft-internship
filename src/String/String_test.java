@@ -1,7 +1,7 @@
 package String;
 
 public class String_test {
-    public void string_test(){
+    public static void main(String[] args) {
         String welcome="welcome";
         String message=new String(" to Intwership!");
         System.out.println(welcome.concat(message));
