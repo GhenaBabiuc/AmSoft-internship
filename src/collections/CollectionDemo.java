@@ -5,7 +5,7 @@ import java.util.Collection;
 public class CollectionDemo {
     public static void main(String[] args) {
         Collection<String> dataTypes =new ArrayList<>();
-        dataTypes.add("String");
+        dataTypes.add("string");
         dataTypes.add("Boolean");
         dataTypes.add("Char");
         dataTypes.add("Double");
