@@ -20,8 +20,8 @@ public class CollectionsUsage {
         System.out.println("------------Lista cu Nume------------");
         nume(list);
 
-        System.out.println("-----------------Data-----------------");
-        data(list);
+        System.out.println("-----------------varsta-----------------");
+        varsta(list);
     }
 
     static void citire(ArrayList<String> list){
@@ -69,7 +69,7 @@ public class CollectionsUsage {
         }
     }
 
-    static void data(ArrayList<String> list) {
+    static void varsta(ArrayList<String> list) {
         int zi=12;
         int luna=12;
         int an=2022;
