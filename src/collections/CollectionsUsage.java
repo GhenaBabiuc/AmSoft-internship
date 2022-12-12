@@ -20,6 +20,8 @@ public class CollectionsUsage {
         System.out.println("------------Lista cu Nume------------");
         nume(list);
 
+        System.out.println("-----------------Data-----------------");
+        data(list);
     }
 
     static void citire(ArrayList<String> list){
@@ -67,4 +69,30 @@ public class CollectionsUsage {
         }
     }
 
+    static void data(ArrayList<String> list) {
+        int zi=12;
+        int luna=12;
+        int an=2022;
+        int da[]=new int[3];
+        for (int i = 0; i < list.size(); i++) {
+            String datas[] = list.get(i).split("\\|");
+
+            for (int j = 0; j < 3; j++) {
+                String d[] =datas[1].split("/");
+                da[j]= Integer.parseInt(d[j]);
+            }
+            if(luna==da[1]){
+                if(zi>da[0]) {
+                    System.out.println(an-da[2]-1+" ani");
+                }else {
+                    System.out.println(an-da[2]+" ani");
+                }
+            }if (luna>da[1]) {
+                System.out.println(an-da[2]+" ani");
+            }if (luna<da[1]) {
+                System.out.println(an-da[2]-1+" ani");
+            }
+        }
+    }
 }
+
