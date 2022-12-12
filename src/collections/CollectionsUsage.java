@@ -14,9 +14,12 @@ public class CollectionsUsage {
         afisare(list);
 
         sortare(list);
-
         System.out.println("------------Lista sortata------------");
         afisare(list);
+
+        System.out.println("------------Lista cu Nume------------");
+        nume(list);
+
     }
 
     static void citire(ArrayList<String> list){
@@ -56,4 +59,12 @@ public class CollectionsUsage {
             list.add(sortedList.get(i));
         }
     }
+
+    static void nume(ArrayList<String> list) {
+        for (int i = 0; i < list.size(); i++) {
+            String words[] = list.get(i).split(" ");
+            System.out.println(words[0]);
+        }
+    }
+
 }
