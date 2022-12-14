@@ -87,9 +87,9 @@ public class CollectionsUsage {
                 }else {
                     System.out.println(an-da[2]+" ani");
                 }
-            }if (luna>da[1]) {
+            }else if (luna>da[1]) {
                 System.out.println(an-da[2]+" ani");
-            }if (luna<da[1]) {
+            }else if (luna<da[1]) {
                 System.out.println(an-da[2]-1+" ani");
             }
         }
