@@ -1,0 +1,9 @@
+Bernard|Arnault|11/11/2000|22
+Bill|Gates|11/11/2000|22
+Elon|Musk|11/11/2000|22
+Jeff|Bezos|11/11/2000|22
+Larry|Elison|11/11/2000|22
+Larry|Page|11/11/2000|22
+Mark|Zuckerberg|11/11/2000|22
+Sergey|Brin|11/11/2000|22
+Warren|Buffet|11/11/2000|22

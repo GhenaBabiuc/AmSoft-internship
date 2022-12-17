@@ -1,9 +1,9 @@
-Jeff Bezos|21/9/1959
-Elon Musk|2/5/1969
-Bernard Arnault|1/12/1949
-Bill Gates|7/8/1989
-Mark Zuckerberg|6/10/1959
-Larry Elison|9/10/1979
-Warren Buffet|11/10/1969
-Larry Page|19/12/1989
-Sergey Brin|17/1/1959
+Jeff|Bezos
+Elon|Musk
+Bernard|Arnault
+Bill|Gates
+Mark|Zuckerberg
+Larry|Elison
+Warren|Buffet
+Larry|Page
+Sergey|Brin

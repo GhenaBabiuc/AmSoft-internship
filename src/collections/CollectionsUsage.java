@@ -1,30 +1,38 @@
 package collections;
 import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class CollectionsUsage {
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<>();
-
-        citire(list);
+       List<String> list=reading();
+       List<String> sortedList=sorting(list);
+       List<String> names=getName(sortedList);
+       List<String> dateOfBirth=getDateOfBirth(sortedList);
+       List<String> age=getAge(dateOfBirth);
 
         System.out.println("----------------Lista----------------");
-        afisare(list);
+        display(list);
 
-        sortare(list);
         System.out.println("------------Lista sortata------------");
-        afisare(list);
+        display(sortedList);
 
         System.out.println("------------Lista cu Nume------------");
-        nume(list);
+        display(names);
 
-        System.out.println("-----------------varsta-----------------");
-        varsta(list);
+        System.out.println("----------------varsta----------------");
+        display(age);
+
+        writToAFile(sortedList,dateOfBirth,age);
     }
 
-    static void citire(ArrayList<String> list){
+    static List<String> reading(){
+        List<String> list = new ArrayList<>();
         BufferedReader br = null;
         try {
             File file = new File("src/collections/employee-input.txt");
@@ -48,50 +56,68 @@ public class CollectionsUsage {
                 System.out.print("eroare " + e);
             }
         }
+        return list;
     }
 
-    static void afisare(ArrayList<String> list){
+    static void display(List<String> list){
         list.forEach(System.out::println);
     }
 
-    static void sortare(ArrayList<String> list) {
-        List<String> sortedList = list.stream().sorted().collect(Collectors.toList());
-        list.clear();
-        for(int i = 0; i< sortedList.size(); i++) {
-            list.add(sortedList.get(i));
-        }
+    static List<String> sorting(List<String> list) {
+        return list.stream().sorted().collect(Collectors.toList());
     }
 
-    static void nume(ArrayList<String> list) {
-        for (int i = 0; i < list.size(); i++) {
-            String words[] = list.get(i).split(" ");
-            System.out.println(words[0]);
+    static List<String> getName(List<String> list) {
+        List<String> names=new ArrayList<>();
+        for (String s : list) {
+            String[] words = s.split("\\|");
+            names.add(words[0]);
         }
+        return names;
     }
 
-    static void varsta(ArrayList<String> list) {
-        int zi=12;
-        int luna=12;
-        int an=2022;
-        int da[]=new int[3];
-        for (int i = 0; i < list.size(); i++) {
-            String datas[] = list.get(i).split("\\|");
+    static List<String> getDateOfBirth(List<String> list) {
+        List<String> dateOfBirth=new ArrayList<>();
 
-            for (int j = 0; j < 3; j++) {
-                String d[] =datas[1].split("/");
-                da[j]= Integer.parseInt(d[j]);
+        Scanner cin = new Scanner(System.in);
+
+        for (String s : list) {
+            System.out.print("Introduceti data nasterii ");
+            System.out.println(s);
+            dateOfBirth.add(cin.next());
+        }
+
+        return dateOfBirth;
+    }
+
+    static List<String> getAge(List<String> list){
+        List<String> age = new ArrayList<>();
+        for (String s : list) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+            LocalDate localDate = LocalDate.parse(s, formatter);
+            LocalDate end = LocalDate.now();
+            long years = ChronoUnit.YEARS.between(localDate, end);
+            age.add(String.valueOf(years));
+        }
+        return age;
+    }
+
+    static void writToAFile(List<String> sortedList,List<String> dateOfBirth,List<String> age){
+        try {
+            FileWriter myWriter = new FileWriter("src/collections/employee-output.txt");
+            for (String string : sortedList) {
+                myWriter.write(string);
+                myWriter.write("|");
+                myWriter.write(dateOfBirth.get(sortedList.indexOf(string)));
+                myWriter.write("|");
+                myWriter.write(age.get(sortedList.indexOf(string)));
+                myWriter.write("\r\n");
             }
-            if(luna==da[1]){
-                if(zi>da[0]) {
-                    System.out.println(an-da[2]-1+" ani");
-                }else {
-                    System.out.println(an-da[2]+" ani");
-                }
-            }else if (luna>da[1]) {
-                System.out.println(an-da[2]+" ani");
-            }else if (luna<da[1]) {
-                System.out.println(an-da[2]-1+" ani");
-            }
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 }
