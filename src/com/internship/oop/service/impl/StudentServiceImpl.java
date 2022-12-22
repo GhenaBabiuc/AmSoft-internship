@@ -1,7 +1,7 @@
-package com.inrenship.oop.service.impl;
+package com.internship.oop.service.impl;
 
-import com.inrenship.oop.model.Student;
-import com.inrenship.oop.service.StudentService;
+import com.internship.oop.model.Student;
+import com.internship.oop.service.StudentService;
 
 public class StudentServiceImpl implements StudentService {
     public boolean esteBursier(Student student, int rang) {

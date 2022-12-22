@@ -1,7 +1,7 @@
-package com.inrenship.oop;
+package com.internship.oop;
 
-import com.inrenship.oop.model.Student;
-import com.inrenship.oop.service.impl.StudentServiceImpl;
+import com.internship.oop.model.Student;
+import com.internship.oop.service.impl.StudentServiceImpl;
 
 import java.util.Arrays;
 

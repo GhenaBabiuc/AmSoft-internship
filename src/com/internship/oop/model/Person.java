@@ -1,4 +1,4 @@
-package com.inrenship.oop.model;
+package com.internship.oop.model;
 
 public class Person {
     private long id;
