@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Products {
     public static void main(String[] args) {
-        HashMap<Integer, String> products =reading();
+        HashMap<Integer, String> products = reading();
         Scanner cin = new Scanner(System.in);
 
         String s = "";
@@ -34,7 +34,7 @@ public class Products {
                     addProducts(products);
                     display(products);
                 }
-                case (3)->{
+                case (3) -> {
                     changeProducts(products);
                     display(products);
                 }
@@ -44,7 +44,7 @@ public class Products {
         System.out.println("Sfarsit!");
     }
 
-    static HashMap<Integer,String> reading(){
+    static HashMap<Integer, String> reading() {
         HashMap<Integer, String> products = new HashMap<>();
         BufferedReader br = null;
         try {
@@ -58,7 +58,7 @@ public class Products {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] words = line.split("\\|");
-                products.put(Integer.valueOf(words[0]),words[1]);
+                products.put(Integer.valueOf(words[0]), words[1]);
             }
 
         } catch (IOException e) {
@@ -73,11 +73,11 @@ public class Products {
         return products;
     }
 
-    static void display(HashMap<Integer, String>products){
-        products.keySet().forEach(key->System.out.println(key+" "+products.get(key)));
+    static void display(HashMap<Integer, String> products) {
+        products.keySet().forEach(key -> System.out.println(key + " " + products.get(key)));
     }
 
-    static void addProducts(HashMap<Integer, String>products){
+    static void addProducts(HashMap<Integer, String> products) {
 
         boolean exist;
         int id;
@@ -85,7 +85,7 @@ public class Products {
         Scanner cin = new Scanner(System.in);
 
         do {
-            exist=false;
+            exist = false;
             System.out.println("Introduceti idul produsului: ");
             id = cin.nextInt();
 
@@ -94,29 +94,41 @@ public class Products {
                     exist = true;
                 }
             }
-        }while (exist);
+        } while (exist);
         System.out.println("Introduceti numele produsului: ");
         name = cin.next();
-        products.put(id,name);
+        products.put(id, name);
     }
 
-    static void changeProducts(HashMap<Integer, String>products){
+    static void changeProducts(HashMap<Integer, String> products) {
         String name;
         Scanner cin = new Scanner(System.in);
         System.out.println("Introduceti numele produsului: ");
         name = cin.next();
-        products.put(products.size(),name);
+        products.put(products.size(), name);
     }
 
-    static void writToAFile(HashMap<Integer, String> products){
+    static void writToAFile(HashMap<Integer, String> products) {
         try {
             FileWriter myWriter = new FileWriter("src/collections/product/products-output.txt");
-            for (Integer i: products.keySet()) {
-                myWriter.write(i);
-                myWriter.write(" ");
-                myWriter.write(products.get(i));
-                myWriter.write("\r\n");
-            }
+
+            products.forEach((k, v) -> {
+                System.out.println(k);
+                try {
+                    myWriter.write(k.toString());
+                    myWriter.write("|");
+                    myWriter.write(v);
+                    myWriter.write("\r\n");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+//            for (Integer i: products.keySet()) {
+//                myWriter.write(i);
+//                myWriter.write(" ");
+//                myWriter.write(products.get(i));
+//                myWriter.write("\r\n");
+//            }
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
