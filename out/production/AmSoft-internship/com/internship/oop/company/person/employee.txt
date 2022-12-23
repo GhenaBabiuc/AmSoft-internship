@@ -1,0 +1,3 @@
+3|Jeff Bezos|3|5000|Java
+2|Elon Musk|2|7000|4
+1|Bernard Arnault|1|10000|Qwerty
