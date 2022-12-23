@@ -93,7 +93,7 @@ public class CollectionsUsage {
     static List<String> getAge(List<String> list){
         List<String> age = new ArrayList<>();
         for (String s : list) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             LocalDate localDate = LocalDate.parse(s, formatter);
             LocalDate end = LocalDate.now();
             long years = ChronoUnit.YEARS.between(localDate, end);
