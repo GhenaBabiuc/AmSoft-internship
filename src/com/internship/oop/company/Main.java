@@ -10,13 +10,18 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         List<Employee> employees = reading();
+        List<Employee> sortedEmployees = sortByFirstName(employees);
 
         display(employees);
+        System.out.println("---------------------sort by first name----------------------------");
+        display(sortedEmployees);
     }
 
     static List<Employee> reading() {
@@ -67,5 +72,15 @@ public class Main {
         for (int i = 0; i < employees.size(); i++) {
             System.out.println(employees.get(i).toString());
         }
+    }
+
+    static List<Employee> sortByFirstName(List<Employee> employees) {
+        List<Employee> sortedEmployees = new ArrayList<Employee>(employees);
+        sortedEmployees.sort(new Comparator<Employee>() {
+            public int compare(Employee p1, Employee p2) {
+                return p1.getFirstLastName().compareTo(p2.getFirstLastName());
+            }
+        });
+        return sortedEmployees;
     }
 }
