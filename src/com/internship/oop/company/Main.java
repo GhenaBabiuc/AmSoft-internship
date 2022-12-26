@@ -15,6 +15,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Employee> employees = reading();
+
+        display(employees);
     }
 
     static List<Employee> reading() {
@@ -59,5 +61,11 @@ public class Main {
             }
         }
         return list;
+    }
+
+    static void display(List<Employee> employees) {
+        for (int i = 0; i < employees.size(); i++) {
+            System.out.println(employees.get(i).toString());
+        }
     }
 }
