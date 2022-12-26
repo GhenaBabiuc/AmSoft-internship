@@ -129,6 +129,7 @@ public class Main {
         for (Employee employee : employees) {
             if (employee.getPersonalCode() == id) {
                 employees.get(employees.indexOf(employee)).setSalary(salary);
+                break;
             }
         }
     }
@@ -141,6 +142,7 @@ public class Main {
         for (Employee employee : employees) {
             if (Objects.equals(employee.getFirstLastName(), nameEmployee)) {
                 System.out.println(employee.toString());
+                break;
             }
         }
     }
