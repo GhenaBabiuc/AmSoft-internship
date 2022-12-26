@@ -19,7 +19,7 @@ public class Main {
         List<Employee> sortedEmployees = sortByFirstName(employees);
 
         display(employees);
-        System.out.println("---------------------sort by first name----------------------------");
+        System.out.println("---------------------order by First Last Name----------------------------");
         display(sortedEmployees);
     }
 
