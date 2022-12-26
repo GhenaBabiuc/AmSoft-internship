@@ -20,21 +20,21 @@ public class Main {
                 System.out.println("Insert side 3");
                 lat3 = cin.nextDouble();
                 Triangle t = new Triangle(color, lat1, lat2, lat3);
-                System.out.println(figure.toLowerCase() + " " + color.toLowerCase() + " " + t.determinePerimeter());
+                System.out.println(figure.toLowerCase() + " " + t.getColor().toLowerCase() + " " + t.determinePerimeter());
             }
             case "CIRCLE" -> {
                 double radius;
                 System.out.println("Enter radius");
                 radius = cin.nextDouble();
                 Circle t = new Circle(color, radius);
-                System.out.println(figure.toLowerCase() + " " + color.toLowerCase() + " " + t.determinePerimeter());
+                System.out.println(figure.toLowerCase() + " " + t.getColor().toLowerCase() + " " + t.determinePerimeter());
             }
             case "SQUARE" -> {
                 double lat;
                 System.out.println("Insert side");
                 lat = cin.nextDouble();
                 Square t = new Square(color, lat);
-                System.out.println(figure.toLowerCase() + " " + color.toLowerCase() + " " + t.determinePerimeter());
+                System.out.println(figure.toLowerCase() + " " + t.getColor().toLowerCase() + " " + t.determinePerimeter());
             }
         }
     }
