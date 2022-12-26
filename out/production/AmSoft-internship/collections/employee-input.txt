@@ -1,9 +1,0 @@
-Jeff|Bezos
-Elon|Musk
-Bernard|Arnault
-Bill|Gates
-Mark|Zuckerberg
-Larry|Elison
-Warren|Buffet
-Larry|Page
-Sergey|Brin
