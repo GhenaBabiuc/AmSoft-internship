@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,6 +21,9 @@ public class Main {
 
         display(employees);
         System.out.println("---------------------order by First Last Name----------------------------");
+        display(sortedEmployees);
+        changeEmployeesSalary(sortedEmployees);
+        System.out.println("-------------------------------------------------------------------------");
         display(sortedEmployees);
     }
 
@@ -81,5 +85,19 @@ public class Main {
             }
         });
         return sortedEmployees;
+    }
+
+    static void changeEmployeesSalary(List<Employee> employees){
+        int id,salary;
+        Scanner cin = new Scanner(System.in);
+        System.out.println("Introduceti Codul personal:");
+        id=cin.nextInt();
+        System.out.println("Introduceti Salariul:");
+        salary=cin.nextInt();
+        for (Employee employee : employees) {
+            if(employee.getPersonalCode()==id){
+                employees.get(employees.indexOf(employee)).setSalary(salary);
+            }
+        }
     }
 }
