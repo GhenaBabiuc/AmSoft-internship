@@ -9,10 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,6 +22,8 @@ public class Main {
         changeEmployeesSalary(sortedEmployees);
         System.out.println("-------------------------------------------------------------------------");
         display(sortedEmployees);
+        System.out.println("-------------------------------------------------------------------------");
+        employeeSearch(sortedEmployees);
     }
 
     static List<Employee> reading() {
@@ -97,6 +96,18 @@ public class Main {
         for (Employee employee : employees) {
             if(employee.getPersonalCode()==id){
                 employees.get(employees.indexOf(employee)).setSalary(salary);
+            }
+        }
+    }
+
+    static void employeeSearch(List<Employee> employees){
+        String nameEmployee;
+        Scanner cin = new Scanner(System.in);
+        System.out.println("Introduceti Numele:");
+        nameEmployee= cin.nextLine();
+        for (Employee employee : employees) {
+            if(Objects.equals(employee.getFirstLastName(), nameEmployee)){
+                System.out.println(employee.toString());
             }
         }
     }
