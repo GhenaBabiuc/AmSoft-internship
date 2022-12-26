@@ -4,3 +4,4 @@
 4|Bill Gates|3|4500|C++
 5|Mark Zuckerberg|2|7600|7
 6|Larry Elison|1|9500|Ads
+7|Bill Gates|1|7500|Qwert

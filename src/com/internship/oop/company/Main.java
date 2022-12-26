@@ -45,6 +45,7 @@ public class Main {
                 case (2) -> {
                     System.out.println("----------------------Change employees salary----------------------------");
                     changeEmployeesSalary(sortedEmployees);
+                    display(sortedEmployees);
                 }
                 case (3) -> {
                     System.out.println("--------------------------Employee search--------------------------------");
@@ -78,14 +79,32 @@ public class Main {
                     case "1" -> {
                         Director d = new Director(Integer.parseInt(words[0]), words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
                         list.add(d);
+//                        Director d = new Director();
+//                        d.setPersonalCode(Integer.parseInt(words[0]));
+//                        d.setFirstLastName(words[1]);
+//                        d.setPositionCode(Integer.parseInt(words[2]));
+//                        d.setSalary(Integer.parseInt(words[3]));
+//                        d.setCompanyName(words[4]);
                     }
                     case "2" -> {
                         Manager m = new Manager(Integer.parseInt(words[0]), words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4]));
                         list.add(m);
+//                        Manager m = new Manager();
+//                        m.setPersonalCode(Integer.parseInt(words[0]));
+//                        m.setFirstLastName(words[1]);
+//                        m.setPositionCode(Integer.parseInt(words[2]));
+//                        m.setSalary(Integer.parseInt(words[3]));
+//                        m.setNumberOfTeamMembers(Integer.parseInt(words[4]));
                     }
                     case "3" -> {
                         Programmer p = new Programmer(Integer.parseInt(words[0]), words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
                         list.add(p);
+//                        Programmer p = new Programmer();
+//                        p.setPersonalCode(Integer.parseInt(words[0]));
+//                        p.setFirstLastName(words[1]);
+//                        p.setPositionCode(Integer.parseInt(words[2]));
+//                        p.setSalary(Integer.parseInt(words[3]));
+//                        p.setProgrammingLanguage(words[4]);
                     }
                     default -> throw new IllegalStateException("Unexpected value: " + words[2]);
                 }
@@ -141,8 +160,18 @@ public class Main {
         nameEmployee = cin.nextLine();
         for (Employee employee : employees) {
             if (Objects.equals(employee.getFirstLastName(), nameEmployee)) {
-                System.out.println(employee.toString());
-                break;
+                System.out.print(employee.toString());
+                switch (employee.getPositionCode()) {
+                    case 1 -> {
+                        System.out.println(" Company Name=" + ((Director) employee).getCompanyName());
+                    }
+                    case 2 -> {
+                        System.out.println(" Number of teams members=" + ((Manager) employee).getNumberOfTeamMembers());
+                    }
+                    case 3 -> {
+                        System.out.println(" Programming language=" + ((Programmer) employee).getProgrammingLanguage());
+                    }
+                }
             }
         }
     }
