@@ -1,17 +1,63 @@
 package com.internship.oop.company;
 
 import com.internship.oop.company.person.Director;
+import com.internship.oop.company.person.Employee;
 import com.internship.oop.company.person.Manager;
 import com.internship.oop.company.person.Programmer;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        Director d = new Director(1, "Bernard Arnault", 1, 10000, "Qwerty");
-        Manager m = new Manager(2, "Elon Musk", 2, 7000, 4);
-        Programmer p = new Programmer(3, "Jeff Bezos", 3, 5000, "Java");
+        List<Employee> employees = reading();
+    }
 
-        System.out.println(d.getFirstLastName());
-        System.out.println(m.getFirstLastName());
-        System.out.println(p.getFirstLastName());
+    static List<Employee> reading() {
+        List<Employee> list = new ArrayList<>();
+
+        BufferedReader br = null;
+        try {
+            File file = new File("src/com/internship/oop/company/person/Employee.txt");
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            br = new BufferedReader(new FileReader("src/com/internship/oop/company/person/Employee.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] words = line.split("\\|");
+                switch (words[2]) {
+                    case "1" -> {
+                        Director d = new Director(Integer.parseInt(words[0]), words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
+                        list.add(d);
+                    }
+                    case "2" -> {
+                        Manager m = new Manager(Integer.parseInt(words[0]), words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), Integer.parseInt(words[4]));
+                        list.add(m);
+                    }
+                    case "3" -> {
+                        Programmer p = new Programmer(Integer.parseInt(words[0]), words[1], Integer.parseInt(words[2]), Integer.parseInt(words[3]), words[4]);
+                        list.add(p);
+                    }
+                    default -> throw new IllegalStateException("Unexpected value: " + words[2]);
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.print("eroare " + e);
+        } finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                System.out.print("eroare " + e);
+            }
+        }
+        return list;
     }
 }
