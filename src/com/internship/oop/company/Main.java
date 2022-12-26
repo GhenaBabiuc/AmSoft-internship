@@ -22,11 +22,11 @@ public class Main {
 
         while (!"5".equals(s)) {
             System.out.println("+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+");
-            System.out.println("|Pentru a afisa lista                         1     |");
-            System.out.println("|Pentru a schimba salariul                    2     |");
-            System.out.println("|Pentru a cauta un angajat                    3     |");
-            System.out.println("|Pentru a calcula salariului pe o luna        4     |");
-            System.out.println("|Pentru a stopa programul                     5     |");
+            System.out.println("|To display the list                          1     |");
+            System.out.println("|To change the salary                         2     |");
+            System.out.println("|To search for an employee                    3     |");
+            System.out.println("|To calculate the salary for a month          4     |");
+            System.out.println("|To stop the program                          5     |");
             System.out.println("+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+");
             s = cin.next();
             int x = 0;
