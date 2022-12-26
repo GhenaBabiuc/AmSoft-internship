@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -69,8 +68,8 @@ public class Main {
     }
 
     static void display(List<Employee> employees) {
-        for (int i = 0; i < employees.size(); i++) {
-            System.out.println(employees.get(i).toString());
+        for (Employee employee : employees) {
+            System.out.println(employee.toString());
         }
     }
 
