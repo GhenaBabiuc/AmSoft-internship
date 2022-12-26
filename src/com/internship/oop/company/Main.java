@@ -34,7 +34,7 @@ public class Main {
             try {
                 x = Integer.parseInt(s);
             } catch (NumberFormatException e) {
-                System.out.println("Nu ati introdus corect");
+                System.out.println("You did not enter correctly");
             }
 
             switch (x) {
@@ -56,7 +56,7 @@ public class Main {
                 }
             }
         }
-        System.out.println("Sfarsit!");
+        System.out.println("The end!");
     }
 
     static List<Employee> reading() {
@@ -92,12 +92,12 @@ public class Main {
             }
 
         } catch (IOException e) {
-            System.out.print("eroare " + e);
+            System.out.print("error " + e);
         } finally {
             try {
                 br.close();
             } catch (IOException e) {
-                System.out.print("eroare " + e);
+                System.out.print("error " + e);
             }
         }
         return list;
@@ -122,9 +122,9 @@ public class Main {
     static void changeEmployeesSalary(List<Employee> employees) {
         int id, salary;
         Scanner cin = new Scanner(System.in);
-        System.out.println("Introduceti Codul personal:");
+        System.out.println("Enter Personal code:");
         id = cin.nextInt();
-        System.out.println("Introduceti Salariul:");
+        System.out.println("Enter Salary:");
         salary = cin.nextInt();
         for (Employee employee : employees) {
             if (employee.getPersonalCode() == id) {
@@ -137,7 +137,7 @@ public class Main {
     static void employeeSearch(List<Employee> employees) {
         String nameEmployee;
         Scanner cin = new Scanner(System.in);
-        System.out.println("Introduceti Numele:");
+        System.out.println("Enter The Name:");
         nameEmployee = cin.nextLine();
         for (Employee employee : employees) {
             if (Objects.equals(employee.getFirstLastName(), nameEmployee)) {
@@ -152,7 +152,7 @@ public class Main {
         for (Employee employee : employees) {
             sumSalary += employee.getSalary();
         }
-        System.out.println("Suma totala pentru salariu este: " + sumSalary);
+        System.out.println("The total amount for salary is: " + sumSalary);
         for (Employee employee : employees) {
             percentageOfTotal = employee.getSalary() / (sumSalary / 100);
             System.out.println(employee.getFirstLastName() + " " + String.format("%.2f", percentageOfTotal) + "%");
