@@ -1,6 +1,0 @@
-1|Jeff Bezos|3|5000|Java
-2|Elon Musk|2|7000|4
-3|Bernard Arnault|1|10000|Qwerty
-4|Bill Gates|3|4500|C++
-5|Mark Zuckerberg|2|7600|7
-6|Larry Elison|1|9500|Ads
