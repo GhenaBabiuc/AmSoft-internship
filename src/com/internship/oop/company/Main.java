@@ -16,14 +16,47 @@ public class Main {
         List<Employee> employees = reading();
         List<Employee> sortedEmployees = sortByFirstName(employees);
 
-        display(employees);
-        System.out.println("---------------------order by First Last Name----------------------------");
-        display(sortedEmployees);
-        changeEmployeesSalary(sortedEmployees);
-        System.out.println("-------------------------------------------------------------------------");
-        display(sortedEmployees);
-        System.out.println("-------------------------------------------------------------------------");
-        employeeSearch(sortedEmployees);
+        Scanner cin = new Scanner(System.in);
+
+        String s = "";
+
+        while (!"5".equals(s)) {
+            System.out.println("+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+");
+            System.out.println("|Pentru a afisa lista                         1     |");
+            System.out.println("|Pentru a schimba salariul                    2     |");
+            System.out.println("|Pentru a cauta un angajat                    3     |");
+            System.out.println("|Pentru a calcula salariului pe o luna        4     |");
+            System.out.println("|Pentru a stopa programul                     5     |");
+            System.out.println("+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+");
+            s = cin.next();
+            int x = 0;
+
+            try {
+                x = Integer.parseInt(s);
+            } catch (NumberFormatException e) {
+                System.out.println("Nu ati introdus corect");
+            }
+
+            switch (x) {
+                case (1) -> {
+                    System.out.println("---------------------Order by First Last Name----------------------------");
+                    display(sortedEmployees);
+                }
+                case (2) -> {
+                    System.out.println("----------------------Change employees salary----------------------------");
+                    changeEmployeesSalary(sortedEmployees);
+                }
+                case (3) -> {
+                    System.out.println("--------------------------Employee search--------------------------------");
+                    employeeSearch(sortedEmployees);
+                }
+                case (4) -> {
+                    System.out.println("----------------------------Salary per month-----------------------------");
+                    salaryPerMonth(employees);
+                }
+            }
+        }
+        System.out.println("Sfarsit!");
     }
 
     static List<Employee> reading() {
@@ -86,29 +119,41 @@ public class Main {
         return sortedEmployees;
     }
 
-    static void changeEmployeesSalary(List<Employee> employees){
-        int id,salary;
+    static void changeEmployeesSalary(List<Employee> employees) {
+        int id, salary;
         Scanner cin = new Scanner(System.in);
         System.out.println("Introduceti Codul personal:");
-        id=cin.nextInt();
+        id = cin.nextInt();
         System.out.println("Introduceti Salariul:");
-        salary=cin.nextInt();
+        salary = cin.nextInt();
         for (Employee employee : employees) {
-            if(employee.getPersonalCode()==id){
+            if (employee.getPersonalCode() == id) {
                 employees.get(employees.indexOf(employee)).setSalary(salary);
             }
         }
     }
 
-    static void employeeSearch(List<Employee> employees){
+    static void employeeSearch(List<Employee> employees) {
         String nameEmployee;
         Scanner cin = new Scanner(System.in);
         System.out.println("Introduceti Numele:");
-        nameEmployee= cin.nextLine();
+        nameEmployee = cin.nextLine();
         for (Employee employee : employees) {
-            if(Objects.equals(employee.getFirstLastName(), nameEmployee)){
+            if (Objects.equals(employee.getFirstLastName(), nameEmployee)) {
                 System.out.println(employee.toString());
             }
+        }
+    }
+
+    static void salaryPerMonth(List<Employee> employees) {
+        double percentageOfTotal = 0, sumSalary = 0;
+        for (Employee employee : employees) {
+            sumSalary += employee.getSalary();
+        }
+        System.out.println("Suma totala pentru salariu este: " + sumSalary);
+        for (Employee employee : employees) {
+            percentageOfTotal = employee.getSalary() / (sumSalary / 100);
+            System.out.println(employee.getFirstLastName() + " " + String.format("%.2f", percentageOfTotal) + "%");
         }
     }
 }
